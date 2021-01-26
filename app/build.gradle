@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.digis.quwa.test"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "0.1"
+
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('release.keystore')
+            keyAlias 'quwa'
+            storePassword 'releaserelease'
+            keyPassword 'releaserelease'
+        }
+
+        debug {
+            storeFile file('debug.keystore')
+            keyAlias 'quwa'
+            storePassword 'debugdebug'
+            keyPassword 'debugdebug!'
+        }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_API_URL", "\"https://api.quwi.com/v2/\""
+            signingConfig = android.signingConfigs.debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_API_URL", "\"https://api.quwi.com/v2/\""
+            signingConfig = android.signingConfigs.release
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    def lifecycleVer = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVer"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVer"
+
+    def toothpickVer = '3.1.0'
+    implementation "com.github.stephanenicolas.toothpick:toothpick-runtime:$toothpickVer"
+    implementation "com.github.stephanenicolas.toothpick:smoothie-androidx:$toothpickVer"
+    annotationProcessor "com.github.stephanenicolas.toothpick:toothpick-compiler:$toothpickVer"
+
+    implementation "io.reactivex.rxjava2:rxjava:2.2.20"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+
+    def retrofitVer = '2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVer"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVer"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    def glideVer = '4.11.0'
+    implementation "com.github.bumptech.glide:glide:$glideVer"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVer"
+}

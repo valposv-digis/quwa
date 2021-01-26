@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.digis.quwa.test.app.auth.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glVertical20Percent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <ImageView
+            android:id="@+id/ivAppLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/glVertical20Percent"
+            app:srcCompat="@drawable/ic_app_logo" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="60dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivAppLogo" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/etEmail"
+            app:layout_constraintStart_toStartOf="@id/etEmail"
+            app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@color/darkPrimary"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@id/etEmail"
+            app:layout_constraintStart_toStartOf="@id/etEmail"
+            app:layout_constraintTop_toBottomOf="@id/etPassword" />
+
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="@string/q_forgot_password"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="@id/etEmail"
+            app:layout_constraintStart_toStartOf="@id/etEmail"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            android:onClick="@{v -> viewModel.onForgotPasswordBtnClick()}"/>
+
+        <include
+            layout="@layout/layout_progress_bar"
+            app:visible="@{viewModel.loading}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

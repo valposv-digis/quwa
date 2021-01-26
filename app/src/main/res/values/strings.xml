@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Quwa</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="q_forgot_password">Forgot password?</string>
+    <string name="a_forgot_password">Our condolences</string>
+    <string name="err_check_email_and_password">Check your email and password</string>
+    <string name="expl_long_tap_to_change_proj_name">Long tap to change the project name</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="name">Name</string>
+    <string name="change_project_name">Change project name</string>
+    <string name="projects">Projects</string>
+    <string name="project_users">Project users</string>
+    <string name="no_users">No users</string>
+</resources>
